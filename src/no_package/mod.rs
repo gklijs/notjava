@@ -15,9 +15,16 @@ impl NoClass {
         let y: f64 = rng.gen();
         NoClass { x, y }
     }
+
+    pub fn times(additions: u128) -> NoClass{
+        let mut result = NoClass::new();
+        for _ in 1..additions {
+            result = result + NoClass::new()
+        };
+        result
+    }
 }
 
-// Implement `Display` for `NoClass`.
 impl fmt::Display for NoClass {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "just two random numbers x:{} and y:{}", self.x, self.y)
