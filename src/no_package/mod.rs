@@ -1,5 +1,6 @@
 use core::fmt;
 use rand::Rng;
+use std::ops::Add;
 
 #[derive(Debug)]
 pub struct NoClass {
@@ -20,5 +21,16 @@ impl NoClass {
 impl fmt::Display for NoClass {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "just two random numbers x:{} and y:{}", self.x, self.y)
+    }
+}
+
+impl Add for NoClass {
+    type Output = Self;
+
+    fn add(self, other: Self) -> Self {
+        Self {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
     }
 }
