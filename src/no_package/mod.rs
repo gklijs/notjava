@@ -1,9 +1,19 @@
 use core::fmt;
+use rand::Rng;
 
 #[derive(Debug)]
-pub (crate) struct NoClass{
-    pub (crate)x: f64,
-    pub (crate)y: f64,
+pub struct NoClass {
+    x: f64,
+    y: f64,
+}
+
+impl NoClass {
+    pub fn new() -> NoClass {
+        let mut rng = rand::thread_rng();
+        let x: f64 = rng.gen();
+        let y: f64 = rng.gen();
+        NoClass { x, y }
+    }
 }
 
 // Implement `Display` for `NoClass`.
